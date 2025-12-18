@@ -27,3 +27,13 @@ class EntryViewModel(private val repositoryDataSiswa: RepositoryDataSiswa) :
     }
 
     //Fungsi untuk menangani saat ada perubahan pada text input
+    fun updateUiState(detailSiswa: DetailSiswa) {
+        uiStateSiswa =
+            UIStateSiswa(
+                detailSiswa = detailSiswa,
+                isEntryValid = validasiInput(detailSiswa)
+            )
+    }
+
+    /* Fungsi untuk menyimpan data yang di-entry */
+
