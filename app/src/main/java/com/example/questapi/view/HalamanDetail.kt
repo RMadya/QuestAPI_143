@@ -97,3 +97,30 @@ private fun BodyDetailDataSiswa(
         modifier =  modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dime.padding_meidum))
     ){
+        var deleteConfirmationRequestby rememberSaveable { mutableStateOf(false) }
+        when(statusUIDetail){
+            is StatusUIDetail.Success -> DetailDataSiswa(
+                siswa = statusUIDetail.satusiswa,
+                modifier = Modifier.fillMaxWidth())
+            else -> {}
+        }
+        OutlinedButton(
+            onClick = {dleeteConfirmationRequired = true },
+            shape = MaterialTheme.shapes.small,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(stringResource(Rr.string.delete))
+        }
+        if (deleteConfirmationRequired){
+            DeleteConfirmationDialog(
+                onDeleteConfirm = {
+                    deleteConfirmationRequired = false
+                    onDelete()
+                },
+                onDeleteCancel = {deleteConfrimationRequired = false},
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+            )
+        }
+    }
+}
+}
