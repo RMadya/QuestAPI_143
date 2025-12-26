@@ -123,4 +123,53 @@ private fun BodyDetailDataSiswa(
         }
     }
 }
+@Composable
+fun DetailDataSiswa(
+    siswa: DataSiswa, modifier: Modifier = Modifier
+){
+    Card(
+        modifier = modifier, color = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    ){
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(id = R.dimen.padding__medium)),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+        ){
+            BarisDetailData(
+                labelResID = R.string.nama1,
+                itemDetail = siswa.nama,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen
+                            .padding_medium
+                    )
+                )
+            )
+            BarisDetailData(
+                labelResID = R.string.alamat1,
+                itemDetail = siswa.alamat,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen
+                            .padding_medium
+                    )
+                )
+            )
+            BarisDetailData(
+                labelResID = R.string.telpon1,
+                itemDetail = siswa.telpon,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen
+                            .padding_medium
+                    )
+                )
+            )
+
+        }
+    }
 }
