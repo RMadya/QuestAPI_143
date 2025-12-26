@@ -68,7 +68,4 @@ fun DetailSiswaScreen(
             }
         },
         modifier = modifier
-    ) { innerPadding ->
-        val coroutineScope = rememberCoroutineScope()
-
-      }
+    ) }
