@@ -42,4 +42,33 @@ fun DetailSiswaScreen(
     // Memastikan penulisan ViewModel dan Factory benar
     viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ){
-    }
+    val uiState = viewModel.statusUIDetail // Observasi state dari ViewModel
+
+    Scaffold(
+        topBar = {
+            SiswaTopAppBar(
+                title = stringResource(DestinasiDetail.titleRes),
+                canNavigateBack = true,
+                navigateUp = navigateBack
+            )
+        },
+        floatingActionButton = {
+            // FAB hanya aktif jika data berhasil dimuat (Success)
+            if (uiState is StatusUIDetail.Success) {
+                FloatingActionButton(
+                    onClick = { navigateToEditItem(uiState.satusiswa.id) },
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large))
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = stringResource(R.string.edit_siswa),
+                    )
+                }
+            }
+        },
+        modifier = modifier
+    ) { innerPadding ->
+        val coroutineScope = rememberCoroutineScope()
+
+      }
